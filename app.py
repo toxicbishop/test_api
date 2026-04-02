@@ -4,6 +4,18 @@ from flask import Flask, jsonify
 
 app = Flask(__name__)
 
+@app.route('/')
+def home():
+    return jsonify({
+        "message": "Welcome to the Test API",
+        "endpoints": [
+            "/posts",
+            "/comments",
+            "/albums"
+        ],
+        "status": "online"
+    })
+
 @app.route('/posts')
 def get_posts():
     url = "https://jsonplaceholder.typicode.com/posts"
